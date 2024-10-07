@@ -88,39 +88,66 @@ return {
 			},
 		},
 	},
-
+	--
+	-- {
+	-- 	"marko-cerovac/material.nvim",
+	-- 	lazy = false, -- No lazy-load para cargar al inicio
+	-- 	priority = 1000, -- Alta prioridad para que se cargue primero
+	-- 	config = function()
+	-- 		require("material").setup({
+	-- 			contrast = {
+	-- 				sidebars = true, -- Contraste en barras laterales
+	-- 				floating_windows = true, -- Contraste en ventanas flotantes
+	-- 			},
+	-- 			styles = {
+	-- 				comments = { italic = true },
+	-- 				keywords = { underline = true },
+	-- 				strings = { bold = true },
+	-- 			},
+	-- 			plugins = {
+	-- 				"nvim-tree",
+	-- 				"telescope",
+	-- 				"gitsigns",
+	-- 				"nvim-cmp",
+	-- 				"which-key",
+	-- 			},
+	-- 		})
+	-- 		vim.g.material_style = "deep ocean" -- Puedes elegir 'darker', 'lighter', etc.
+	-- 		vim.cmd("colorscheme material") -- Activa el tema Material
+	-- 	end,
+	-- },
 	-- filename
-	{
-		"b0o/incline.nvim",
-		dependencies = { "craftzdog/solarized-osaka.nvim" },
-		event = "BufReadPre",
-		priority = 1200,
-		config = function()
-			local colors = require("solarized-osaka.colors").setup()
-			require("incline").setup({
-				highlight = {
-					groups = {
-						InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
-						InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
-					},
-				},
-				window = { margin = { vertical = 0, horizontal = 1 } },
-				hide = {
-					cursorline = true,
-				},
-				render = function(props)
-					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-					if vim.bo[props.buf].modified then
-						filename = "[+] " .. filename
-					end
-
-					local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-					return { { icon, guifg = color }, { " " }, { filename } }
-				end,
-			})
-		end,
-	},
-
+	-- {
+	-- 	"b0o/incline.nvim",
+	-- 	dependencies = { "craftzdog/solarized-osaka.nvim" },
+	-- 	event = "BufReadPre",
+	-- 	priority = 1200,
+	-- 	config = function()
+	-- 		local colors = require("solarized-osaka.colors").setup()
+	-- 		require("incline").setup({
+	-- 			highlight = {
+	-- 				groups = {
+	-- 					InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
+	-- 					InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
+	-- 				},
+	-- 			},
+	-- 			window = { margin = { vertical = 0, horizontal = 1 } },
+	-- 			hide = {
+	-- 				cursorline = true,
+	-- 			},
+	-- 			render = function(props)
+	-- 				local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+	-- 				if vim.bo[props.buf].modified then
+	-- 					filename = "[+] " .. filename
+	-- 				end
+	--
+	-- 				local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+	-- 				return { { icon, guifg = color }, { " " }, { filename } }
+	-- 			end,
+	-- 		})
+	-- 	end,
+	-- },
+	--
 	-- statusline
 	{
 		"nvim-lualine/lualine.nvim",

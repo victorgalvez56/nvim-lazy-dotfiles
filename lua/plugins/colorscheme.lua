@@ -1,6 +1,6 @@
 return {
 	{
-		"craftzdog/solarized-osaka.nvim",
+		"marko-cerovac/material.nvim",
 		lazy = true,
 		priority = 1000,
 		opts = function()
