@@ -1,10 +1,10 @@
 local discipline = require("craftzdog.discipline")
 
--- discipline.cowboy()
+discipline.cowboy()
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
--- Mis atajos
+-- Me shortcuts
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')
@@ -19,6 +19,7 @@ keymap.set("n", "<Leader>d", '"_d')
 keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
+keymap.set("i", "<Leader>bt", "`", { noremap = true, silent = true })
 
 -- Incrementar/decrementar
 keymap.set("n", "+", "<C-a>")
@@ -78,4 +79,9 @@ end)
 keymap.set("n", "ff", function()
 	vim.lsp.buf.format({ async = true })
 	vim.cmd("w")
+end, opts)
+
+-- Terminal floatting
+keymap.set("n", "<Leader>t¿", function()
+	vim.cmd("ToggleTerm direction=float")
 end, opts)
