@@ -1,4 +1,4 @@
-title: 🧠 Vim Keymaps & LazyVim Setup Summary
+Vim Keymaps & LazyVim Setup Summary
 -------------------
 
 ## 📦 Plugin-Specific Keymaps
