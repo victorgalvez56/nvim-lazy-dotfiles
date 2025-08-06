@@ -1,5 +1,3 @@
----
-
 title: 🧠 Vim Keymaps & LazyVim Setup Summary
 -------------------
 
