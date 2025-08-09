@@ -1,9 +1,12 @@
-local discipline = require("craftzdog.discipline")
+local discipline = require("yolo.discipline")
 
 discipline.cowboy()
 
 local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
+local opts = {
+    noremap = true,
+    silent = true
+}
 -- Me shortcuts
 
 -- Do things without affecting the registers
@@ -19,69 +22,71 @@ keymap.set("n", "<Leader>d", '"_d')
 keymap.set("n", "<Leader>D", '"_D')
 keymap.set("v", "<Leader>d", '"_d')
 keymap.set("v", "<Leader>D", '"_D')
-keymap.set("i", "<Leader>bt", "`", { noremap = true, silent = true })
+keymap.set("i", "<Leader>bt", "`", {
+    noremap = true,
+    silent = true
+})
 
--- Incrementar/decrementar
+-- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
--- Borrar una palabra hacia atrás
+-- Delete back word
 keymap.set("n", "dw", 'vb"_d')
 
--- Seleccionar todo
+-- Select all 
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
--- Guardar con permisos de root (no funciona por ahora)
--- vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
-
--- Deshabilitar continuaciones
+-- Disable continuos
 keymap.set("n", "<Leader>o", "o<Esc>^Da", opts)
 keymap.set("n", "<Leader>O", "O<Esc>^Da", opts)
 
--- Lista de saltos
+-- List of jumps
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
--- Nueva pestaña
+-- New tab
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 
--- Dividir ventana
+-- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
 keymap.set("n", "sv", ":vsplit<Return>", opts)
 
--- Mover entre ventanas
+-- Move beetween tabs
 keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
 keymap.set("n", "sj", "<C-w>j")
 keymap.set("n", "sl", "<C-w>l")
 
--- Redimensionar ventana
+-- Resize windows
 keymap.set("n", "<C-w><left>", "<C-w><")
 keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
 keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Diagnósticos
+-- Diagnostics
 keymap.set("n", "<C-j>", function()
-	vim.diagnostic.goto_next()
+    vim.diagnostic.goto_next()
 end, opts)
 
 keymap.set("n", "<Leader>r", function()
-	require("craftzdog.hsl").replaceHexWithHSL()
+    require("yolo.hsl").replaceHexWithHSL()
 end)
 
 keymap.set("n", "<Leader>i", function()
-	require("craftzdog.lsp").toggleInlayHints()
+    require("yolo.lsp").toggleInlayHints()
 end)
 
--- Formatear y guardar el archivo actual
+-- Format and save file current
 keymap.set("n", "ff", function()
-	vim.lsp.buf.format({ async = true })
-	vim.cmd("w")
+    vim.lsp.buf.format({
+        async = true
+    })
+    vim.cmd("w")
 end, opts)
 
 -- Terminal floatting
 keymap.set("n", "<Leader>t¿", function()
-	vim.cmd("ToggleTerm direction=float")
+    vim.cmd("ToggleTerm direction=float")
 end, opts)
